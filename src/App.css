@@ -14,7 +14,7 @@ body {
   text-align: center;
   margin: 120px auto;
   border-radius: 5px;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .h1 {
