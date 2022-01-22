@@ -5,11 +5,17 @@ import './App.css';
 import {ToDoForm} from './components/ToDoForm'
 import { ToDoList } from './components/ToDoListContainer';
 import {toDoDTO} from './DTOs/App.dto'
+// require('dotenv').config()
+export const BASE_URL : string | undefined = `https://napsesbend.herokuapp.com/api`
+
 
 function App() {
   const [toDos, setToDos] = useState<Array<toDoDTO>>([]);
 
   const addToDo = async ({title, description}: {[key: string]: string}) => {
+    fetch({ filterType: 'all' }).then(response => {
+      setToDos([...response]);
+    }) 
     if (title) setToDos([...toDos, { title, description, status: false}]);
   };
 
@@ -26,12 +32,12 @@ function App() {
   }
 
   const fetch = async ({ filterType = 'all' }: {filterType?: 'all' | 'completed' | 'in_progress'}) => {
-    const createToDo = await axios.get(`http://localhost:3004/api/get-todo?completed=${filterType}`);
+    const createToDo = await axios.get(`${BASE_URL}/get-todo?completed=${filterType}`);
     return createToDo.data.data    
   };
 
   const updateTodo = async ({ id }: {id: number}) => {
-    await axios.patch(`http://localhost:3004/api/complete-todo/${id}`);
+    await axios.patch(`${BASE_URL}/complete-todo/${id}`);
   };
 
   useEffect(() => {

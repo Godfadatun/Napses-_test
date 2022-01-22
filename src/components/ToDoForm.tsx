@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { BASE_URL } from '../App';
 import { addToDO } from '../DTOs/App.dto';
 
 
@@ -19,7 +20,7 @@ const ToDoForm = ({addToDo}: {addToDo: addToDO}) => {
 
     const handleSubmit = async (e: FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        const createToDo = await axios.post('http://localhost:3004/api/create-todo', newToDo)
+        const createToDo = await axios.post(`${BASE_URL}/create-todo`, newToDo)
         const { title: text , description } = createToDo.data.data
         
         addToDo({ description, text });
