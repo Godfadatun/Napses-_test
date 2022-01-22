@@ -12,7 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 120px auto;
+  margin: 10px auto;
   border-radius: 5px;
   justify-content: flex-start;
 }
@@ -79,8 +79,8 @@ ul {
   justify-content: flex-start;
   align-items: center;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;;
-  margin: 4px auto;
-  padding: 16px;
+  margin: 1px auto;
+  padding: 10px;
   width: 80%;
   border-radius: 20px;
   text-align: left;
